@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+
+  apimodelo:
+    container_name: apimodelo
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/app
+      - '/usr/src/app/node_modules'
+    environment:
+      - NODE_ENV=test
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    ports:
+      - 8080:8080
+    stdin_open: true
+    tty: true
+    
+  mongodb:
+    image: mongo:4.4.5
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=apimodelo
+      - MONGO_INITDB_ROOT_PASSWORD=apimodelo
