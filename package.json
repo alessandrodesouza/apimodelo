@@ -22,6 +22,7 @@
     "url": "https://github.com/alessandrodesouza/apimodelo/issues"
   },
   "homepage": "https://github.com/alessandrodesouza/apimodelo#readme",
+  "type": "module",
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
