@@ -6,7 +6,38 @@ describe('Testes para criação do tipo nome', () => {
       erro: null,
       nome: 'ALESSANDRO DE SOUZA',
     });
+
+    expect(nome.criar('alessandro - de . souza _ ok')).toMatchObject({
+      erro: null,
+      nome: 'ALESSANDRO - DE . SOUZA _ OK',
+    });
   });
 
-  test('');
+  test('Quando for informato um nome nulo ou vazio, o erro deve ser retornado', () => {
+    expect(nome.criar()).toMatchObject({
+      erro:
+        'O nome é obrigatório e deve ter até 250 caracteres. Nem todos os especiais são aceitos.',
+      nome: null,
+    });
+
+    expect(nome.criar(null)).toMatchObject({
+      erro:
+        'O nome é obrigatório e deve ter até 250 caracteres. Nem todos os especiais são aceitos.',
+      nome: null,
+    });
+
+    expect(nome.criar('')).toMatchObject({
+      erro:
+        'O nome é obrigatório e deve ter até 250 caracteres. Nem todos os especiais são aceitos.',
+      nome: null,
+    });
+  });
+
+  test('Quando for informado um nome com caracter especial não aceito, o erro deve ser retornado', () => {
+    expect(nome.criar('ALESSANDRO & de *')).toMatchObject({
+      erro:
+        'O nome é obrigatório e deve ter até 250 caracteres. Nem todos os especiais são aceitos.',
+      nome: null,
+    });
+  });
 });
