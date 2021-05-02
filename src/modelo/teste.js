@@ -1,11 +1,16 @@
-import R from 'ramda';
-import fazendaM from './fazenda.js';
+/* eslint-disable no-console */
+const { criar } = require('./tipos/endereco');
 
-const { fazenda, erro } = fazendaM.criar({
-  nome: 'teste',
-  endereco: {},
-  proprietario: 'joão',
-  ramo: 'textil',
-});
+console.log(criar({ endereco: 'teste' }));
 
-console.log(fazenda, erro);
+// import R from 'ramda';
+// import fazendaM from './fazenda.js';
+
+// const { fazenda, erro } = fazendaM.criar({
+//   nome: 'teste',
+//   endereco: {},
+//   proprietario: 'joão',
+//   ramo: 'textil',
+// });
+
+// console.log(fazenda, erro);
